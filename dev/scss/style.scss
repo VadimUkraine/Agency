@@ -838,6 +838,7 @@ $line-height: $clip-height - 5px;
 }
 
 #svg-main-letter{
+	display: none;
 	opacity: 0;
 	transition: all .2s linear;
 }

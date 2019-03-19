@@ -8,7 +8,7 @@ var mySVG = $('#svg-main-letter').drawsvg({
 //animation for the FIRST screen
 
 $(document).ready(function(){
-
+	$('#svg-main-letter').css('display', 'block');
 	$('#svg-main-letter').css('opacity', '1');
 	setTimeout(function(){
 		mySVG.drawsvg('animate');
