@@ -5,6 +5,69 @@ var mySVG = $('#svg-main-letter').drawsvg({
 });
 
 
+
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		sectionsColor: ['#1D1D1D', '#B0140E', '#1D1D1D', '#EDEDED'],
+	    bigSectionsDestination: top,
+		scrollingSpeed: 700,
+		scrollBar: true,
+		onLeave: function(origin, destination, direction){
+			var leavingSection = this;
+
+			if(origin.index == 2 && direction =='down'){
+
+			setTimeout(function(){		
+				$('.island').addClass('map_svg_transform');	
+				$('.landmark_wrap').css('transform', 'scale(1)');
+				$('.world_title_start').css('transform', 'translate(0)');
+				$('.company_title_start').css('transform', 'translate(0)');
+			}, 100);
+
+			setTimeout(function(){		
+				$('.world_title_end').css('transform', 'translate(0)');
+				$('.company_title_end').css('transform', 'translate(0)');
+			}, 200);
+
+			setTimeout(function(){		
+				$('.happen_world_content').css('opacity', '1');		
+			}, 400);
+
+			setTimeout(function(){		
+				$('.happen_company_content').css('opacity', '1');		
+			}, 700);
+
+			setTimeout(function(){			
+				$('.attention_sign').css('transform', 'scale(1)');
+			}, 1100);
+
+			setTimeout(function(){		
+				$('.attention_hide_block').css('transform', 'translate(100%)');		
+			}, 1500)
+
+			}
+
+			else if(origin.index == 1 && direction == 'up'){
+			$('.island').removeClass('map_svg_transform');	
+				$('.landmark_wrap').css('transform', 'scale(0)');
+				$('.world_title_start').css('transform', 'translate(0, 85px)');
+				$('.company_title_start').css('transform', 'translate(0, 85px)');
+				$('.world_title_end').css('transform', 'translate(0, 85px)');
+				$('.company_title_end').css('transform', 'translate(0, 85px)');
+				$('.happen_world_content').css('opacity', '0');
+				$('.happen_company_content').css('opacity', '0');
+				$('.attention_sign').css('transform', 'scale(0)');
+				$('.attention_hide_block').css('transform', 'translate(0px)');
+			}
+		},
+
+	});
+
+	//methods
+	$.fn.fullpage.setAllowScrolling(true);
+});
+
+
 //animation for the FIRST screen
 
 $(document).ready(function(){
@@ -76,50 +139,7 @@ $(document).ready(function(){
 	setTimeout(function(){
 		$('.line').addClass('transform_line');
 	}, 6000);
-
-	setTimeout(function(){		
-		$('.change_screen').addClass('transform_screen');			
-	}, 7000);
-
-	setTimeout(function(){		
-		$('.wrapper_first').css('display','none');	
-		$('body').css('backgroundColor','#EDEDED');
-		$('.wrapper_second').css('display','flex');	
-	}, 8000);
-
-	setTimeout(function(){		
-		$('.island').addClass('map_svg_transform');	
-		$('.landmark_wrap').css('transform', 'scale(1)');
-		$('.world_title_start').css('transform', 'translate(0)');
-		$('.company_title_start').css('transform', 'translate(0)');
-	}, 8300);
-
-	setTimeout(function(){		
-		$('.world_title_end').css('transform', 'translate(0)');
-		$('.company_title_end').css('transform', 'translate(0)');
-	}, 8400);
-
-	setTimeout(function(){		
-		$('.happen_world_content').css('opacity', '1');		
-	}, 8600);
-
-	setTimeout(function(){		
-		$('.happen_company_content').css('opacity', '1');		
-	}, 8900);
-
-	setTimeout(function(){			
-		$('.attention_sign').css('transform', 'scale(1)');
-	}, 9200);
-
-	setTimeout(function(){		
-		$('.attention_hide_block').css('transform', 'translate(100%)');		
-	}, 9600)
-
-
-	setTimeout(function(){
-		$('.change_screen').css('display', 'none')			
-	}, 10000);
-
+	
 })
 
 
@@ -129,5 +149,14 @@ $(document).ready(function(){
 
 $(document).on("click", '#hamburger_cs', function(){
     $(this).toggleClass('clicked');
-    $('.cs_menu').toggleClass('nav_show');
+    $('.cs_menu').toggleClass('nav_show_black');
+    $('.cf_menu').removeClass('nav_show_white');
+    $('#hamburger_cf').removeClass('clicked');
+})
+
+$(document).on("click", '#hamburger_cf', function(){
+    $(this).toggleClass('clicked');
+    $('.cf_menu').toggleClass('nav_show_white');
+    $('.cs_menu').removeClass('nav_show_black');
+    $('#hamburger_cs').removeClass('clicked');
 })
